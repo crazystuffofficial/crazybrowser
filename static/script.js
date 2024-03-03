@@ -1,5 +1,6 @@
 import StrShuffler from "./lib/StrShuffler.js";
 import Api from "./lib/api.js";
+var password;
 var sessionId, httpProxy, shuffling;
 function setError(err) {
     if (err) {
@@ -81,7 +82,7 @@ window.addEventListener("error", setError);
 
     api.needpassword().then(doNeed => {
         if (doNeed) {
-            document.getElementById("password-wrapper").style.display = "";
+            password = prompt("Insert password here to enter");
         }
     });
     window.addEventListener("load", function () {
