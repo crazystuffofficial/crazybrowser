@@ -1,3 +1,4 @@
+var passwordPrompt = "";
 export default class Api {
     constructor() {
         this.ok = true;
@@ -66,5 +67,5 @@ export default class Api {
 }
 
 function getPassword() {
-    return password;
+    return passwordPrompt;
 }
