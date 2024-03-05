@@ -97,9 +97,6 @@ function makeNewSession(){
                 go("https://www.google.com");
             });
         }
-        if(localStorage.getItem("sessionId") == null){
-            makeNewSession();
-        }
         async function go(url) {
             setError();
             const id = sessionId;
@@ -117,6 +114,11 @@ function makeNewSession(){
                 var shuffler = new StrShuffler(shuffleDict);
                 window.location.href = "/" + id + "/" + shuffler.shuffle(url);
             }
+        }
+        if(localStorage.getItem("sessionId") == null){
+            makeNewSession();
+        } else{
+            go("https://www.google.com");
         }
     });
 })();
