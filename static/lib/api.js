@@ -66,6 +66,6 @@ export default class Api {
 }
 
 function getPassword() {
-    var element = password;
-    return element;
+    var element = document.getElementById("session-password");
+    return element ? element.value : "";
 }
