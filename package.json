@@ -1,21 +1,21 @@
 {
-  "name": "rammerhead",
+  "name": "crazybrowser",
   "version": "1.0.0",
-  "description": "Rammerhead easy deployment version.",
+  "description": "High quality proxy server",
   "type": "module",
   "scripts": {
     "start": "node src/index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/amethystnetwork-dev/Rammerhead.git"
+    "url": "git+https://github.com/crazystuffofficial/crazybrowser"
   },
-  "author": "binary-person and Amethyst Network contributors",
+  "author": "binary-person, Amethyst Network contributors, Abyss Network, and Crazy stuff official",
   "license": "GPL-3.0-or-later",
   "bugs": {
-    "url": "https://github.com/amethystnetwork-dev/Rammerhead/issues"
+    "url": "https://github.com/crazystuffofficial/crazybrowser/issues"
   },
-  "homepage": "https://github.com/amethystnetwork-dev/Rammerhead#readme",
+  "homepage": "https://github.com/crazystuffofficial/crazybrowser#readme",
   "dependencies": {
     "serve-static": "^1.15.0",
     "async-exit-hook": "^2.0.1",
