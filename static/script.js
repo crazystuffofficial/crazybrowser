@@ -94,6 +94,7 @@ function makeNewSession(){
                 sessionId = id;
                 httpProxy = "";
                 localStorage.setItem("sessionId", sessionId);
+                go("https://www.google.com");
             });
         }
         if(localStorage.getItem("sessionId") == null){
@@ -117,6 +118,5 @@ function makeNewSession(){
                 window.location.href = "/" + id + "/" + shuffler.shuffle(url);
             }
         }
-        go("https://www.google.com");
     });
 })();
