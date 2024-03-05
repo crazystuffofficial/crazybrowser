@@ -13,6 +13,7 @@ alert(err);
 window.addEventListener("error", setError);
 
 (function () {
+    document.querySelector("#inputBox").style.display = 'none';
     const api = new Api();
     var localStorageKey = "rammerhead_sessionids";
     var localStorageKeyDefault = "rammerhead_default_sessionid";
@@ -96,8 +97,11 @@ function makeNewSession(){
                 sessionId = id;
                 httpProxy = "";
                 localStorage.setItem("sessionId", sessionId);
-                go("https://www.google.com");
+                loadSite();
             });
+        }
+        function loadSite(){
+            document.querySelector("#inputBox").style.display = 'block';
         }
         async function go(url) {
             setError();
@@ -121,7 +125,7 @@ function makeNewSession(){
             makeNewSession();
         } else{
             sessionId = localStorage.getItem("sessionId");
-            go("https://www.google.com");
+            loadSite();
         }
     });
 })();
