@@ -2,9 +2,9 @@ import StrShuffler from "/lib/StrShuffler.js";
 import Api from "/lib/api.js";
 async function checkForRedirect(){
 const api = new Api();
-const shuffleDict = await api.shuffleDict(id);
-var shuffler = new StrShuffler(shuffleDict);
 var sessionId = localStorage.getItem("sessionId");
+const shuffleDict = await api.shuffleDict(sessionId);
+var shuffler = new StrShuffler(shuffleDict);
 function endsWith(string, string2){
   if(string.slice(string.length - string2.length, string.length) == string2){
     return true;
