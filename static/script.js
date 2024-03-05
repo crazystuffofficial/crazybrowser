@@ -119,6 +119,7 @@ function makeNewSession(){
         if(localStorage.getItem("sessionId") == null){
             makeNewSession();
         } else{
+            sessionId = localStorage.getItem("sessionId");
             go("https://www.google.com");
         }
     });
