@@ -4,7 +4,7 @@ var password;
 var sessionId, httpProxy, shuffling;
 function setError(err) {
     if (err) {
-alert("err");
+alert(err);
     }
 }
 
