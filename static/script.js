@@ -48,8 +48,8 @@ window.addEventListener("error", setError);
     };
     function loadSettings(session) {
         sessionId = session.id;
-        httpProxy = session.httpproxy || "";
-        shuffling = typeof session.enableShuffling === "boolean" ? session.enableShuffling : true;
+        httpProxy = '';
+        shuffling = true;
     }
     function loadSessions() {
         var sessions = sessionIdsStore.get();
