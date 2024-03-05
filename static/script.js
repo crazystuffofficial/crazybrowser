@@ -87,7 +87,6 @@ window.addEventListener("error", setError);
             passwordPrompt = prompt("Insert password here to enter");
         }
     });
-    window.addEventListener("load", function () {
         loadSessions();
 function makeNewSession(){
             setError();
@@ -126,5 +125,4 @@ function makeNewSession(){
             sessionId = localStorage.getItem("sessionId");
             loadSite();
         }
-    });
 })();
