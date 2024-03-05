@@ -1,4 +1,4 @@
-var password;
+var password = "";
 import StrShuffler from "./lib/StrShuffler.js";
 import Api from "./lib/api.js";
 var password;
