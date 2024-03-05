@@ -2,8 +2,8 @@
 <html>
 <head>
     <script src="script.js" type="module"></script>
-	<script src="uv/uv.config.js"></script>
 	<script src="uv/uv.bundle.js"></script>
+	<script src="uv/uv.config.js"></script>
 <script>
       if ("serviceWorker" in navigator) {
         window.addEventListener("load", () => {
@@ -12,14 +12,16 @@
           });
         });
       }
-	document.querySelector("form").addEventListener("submit", function(e){
-		e.preventDefault();
-		window.location.href = __uv$config.prefix + __uv$config.encodeUrl(document.querySelector("input").value);
-	});
 </script>
     <title>Browser</title>
 </head>
 <body>
 <form><input id="inputBox" placeholder="Search the web freely"></form>
+<script>
+		document.querySelector("form").addEventListener("submit", function(e){
+		e.preventDefault();
+		window.location.href = __uv$config.prefix + __uv$config.encodeUrl(document.querySelector("input").value);
+	});
+</script>
 </body>
 </html>
