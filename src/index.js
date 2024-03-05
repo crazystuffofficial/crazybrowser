@@ -53,7 +53,7 @@ app.use((req, res, next) => {
 });
 
 app.use(serveStatic(fileURLToPath(new URL("../static/", import.meta.url))));
-app.all((req, res) => {
+app.all("/*", (req, res) => {
 	var windowLocation = req.url;
 	windowLocation = windowLocation.split("/");
 	if(endsWith(windowLocation[1], "!f")){
