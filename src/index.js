@@ -1,18 +1,17 @@
+import express from 'express';
 import createRammerhead from "../rammerhead/src/server/index.js";
-
+import { createBareServer } from '@tomphttp/bare-server-node';
 import { fileURLToPath } from "node:url";
 import { createServer } from "node:http";
 import { hostname } from "node:os";
 import serveStatic from "serve-static";
-import connect from "connect";
 
 // The following message MAY NOT be removed
 console.log("Rammerhead easy deployment version\nThis program comes with ABSOLUTELY NO WARRANTY.\nThis is free software, and you are welcome to redistribute it\nunder the terms of the GNU General Public License as published by\nthe Free Software Foundation, either version 3 of the License, or\n(at your option) any later version.\n\nYou should have received a copy of the GNU General Public License\nalong with this program. If not, see <https://www.gnu.org/licenses/>.\n");
-
-const app = connect();
+const bareServer = createBareServer('/bare/');
 const rh = createRammerhead();
 const server = createServer();
-
+const app = express(server);
 // used when forwarding the script
 const rammerheadScopes = [
 	"/rammerhead.js",
@@ -36,16 +35,44 @@ function shouldRouteRh(req) {
 	const url = new URL(req.url, "https://0.0.0.0");
 	return (rammerheadScopes.includes(url.pathname) || rammerheadSession.test(url.pathname));
 }
-
+function endsWith(string, string2){
+  if(string.slice(string.length - string2.length, string.length) == string2){
+    return true;
+  } else{
+    return false;
+  }
+}
 app.use((req, res, next) => {
-    if(shouldRouteRh(req)) rh.emit("request", req, res); else next();
+    if(shouldRouteRh(req)){
+	    rh.emit("request", req, res); 
+    } else if (bareServer.shouldRoute(req)) {
+    bareServer.routeRequest(req, res)
+  } else {
+	    next();
+    }
 });
 
 app.use(serveStatic(fileURLToPath(new URL("../static/", import.meta.url))));
-
+app.all((req, res) => {
+	var windowLocation = req.url;
+	windowLocation = windowLocation.split("/");
+	if(endsWith(windowLocation[1], "!f")){
+		windowLocation[1] = windowLocation[1].slice(0, windowLocation[1].length - 2);
+		windowLocation = windowLocation.join("/");
+		res.redirect(windowLocation)
+	} else{
+		res.status(404).send("404 Not Found");
+	}
+})
 server.on("request", app);
 server.on("upgrade", (req, socket, head) => {
-    if(shouldRouteRh(req)) rh.emit("upgrade", req, socket, head); else socket.end();
+    if(shouldRouteRh(req)){
+	    rh.emit("upgrade", req, socket, head);
+    }else if(bareServer.shouldRoute(req)){
+    	bareServer.routeUpgrade(req, socket, head)
+    } else{
+	socket.end();    
+    }
 });
 
 server.on("listening", () => {
