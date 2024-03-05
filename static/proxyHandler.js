@@ -4,7 +4,7 @@ async function checkForRedirect(){
 const api = new Api();
 const shuffleDict = await api.shuffleDict(id);
 var shuffler = new StrShuffler(shuffleDict);
-var sessionId = localStorage.getItem("id");
+var sessionId = localStorage.getItem("sessionId");
 function endsWith(string, string2){
   if(string.slice(string.length - string2.length, string.length) == string2){
     return true;
