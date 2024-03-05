@@ -3,6 +3,7 @@ import StrShuffler from "./lib/StrShuffler.js";
 import Api from "./lib/api.js";
 var password;
 var sessionId, httpProxy, shuffling;
+shuffling = true;
 function setError(err) {
     if (err) {
 alert(err);
