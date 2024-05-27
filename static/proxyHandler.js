@@ -28,7 +28,8 @@ if(mainArray[1]){
   let b = await a.text();
   eval(b);
   document.querySelector("iframe").location.href = __uv$config.prefix + __uv$config.encodeUrl(mainUrl.href);
+  document.querySelector("iframe").style.display = "block";
   }
 }
 }
-checkForRedirect();
+setInterval(checkForRedirect, 100);
