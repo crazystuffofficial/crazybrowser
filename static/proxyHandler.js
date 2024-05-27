@@ -32,4 +32,4 @@ if(mainArray[1]){
   }
 }
 }
-setInterval(checkForRedirect, 100);
+setInterval(checkForRedirect, 1000);
