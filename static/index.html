@@ -39,7 +39,6 @@ var array = btoa(JSON.stringify([location.origin + __uv$config.prefix + __uv$con
     iframe.allow = "fullscreen";
     iframe.src = "/proxyRedirector.html#" + array;
     win.document.body.appendChild(iframe);
-        window.location.href = __uv$config.prefix + __uv$config.encodeUrl(url);
 });
 
 function isUrl(val = ''){
