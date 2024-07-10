@@ -42,6 +42,12 @@ function endsWith(string, string2){
     return false;
   }
 }
+app.use(express.json());
+app.use(
+  express.urlencoded({
+    extended: true,
+  })
+);
 app.use((req, res, next) => {
     if(shouldRouteRh(req)){
 	    rh.emit("request", req, res); 
